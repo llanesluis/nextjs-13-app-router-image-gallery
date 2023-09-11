@@ -1,16 +1,16 @@
 import { Alert } from '@/components/bootsrap'
-import { UnsplashImage } from '@/models/unsplash-image'
+import { UnsplashImage } from '@/models/unsplash-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Static fetching - App Router',
+  title: 'Static fetching | App Router',
 }
 export default async function StaticPage() {
-  const response = await fetch(
+  const res = await fetch(
     'https://api.unsplash.com/photos/random?client_id=' + process.env.UNSPLASH_API_KEY
   )
-  const randomImg: UnsplashImage = await response.json()
+  const randomImg: UnsplashImage = await res.json()
 
   //console.log(randomImg)
 

@@ -9,3 +9,11 @@ export interface UnsplashImage {
   width: number
   height: number
 }
+
+export interface UnsplashTopic {
+  id: string
+  slug: string
+  title: string
+  description: string
+  total_photos: number
+}

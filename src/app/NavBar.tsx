@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap'
 import { usePathname } from 'next/navigation'
 
 export default function NavBar() {
@@ -23,11 +23,20 @@ export default function NavBar() {
               Dynamic fetching
             </Nav.Link>
             <Nav.Link as={Link} href='/isr' active={pathname == '/isr'}>
-              Incremental Static Regeneration
+              ISR
             </Nav.Link>
-            <Nav.Link as={Link} href='/' active={pathname == '/pag4'}>
-              Pag 4
-            </Nav.Link>
+            <NavDropdown title='Topics' id='topics-dropdown'>
+              <NavDropdown.Item as={Link} href='/topics/health'>
+                Health
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} href='/topics/wallpapers'>
+                Wallpapers
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} href='/topics/coding'>
+                Coding
+              </NavDropdown.Item>
+            </NavDropdown>
+
             <Nav.Link as={Link} href='/users' active={pathname == '/users'}>
               Users
             </Nav.Link>

@@ -1,13 +1,14 @@
 import { Alert } from '@/components/bootsrap'
-import { UnsplashImage } from '@/models/unsplash-image'
+import { UnsplashImage } from '@/models/unsplash-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Dynamic fetching - App Router',
+  title: 'Dynamic fetching | App Router',
 }
 
 //?Ponerlo afuera aplica para toda la pagina, ponerlo adentro es para decirle a next que aplique para un fetch en especifico
+//Equivalente a getServerSideProps del pages router
 export const revalidate = 0
 //O poner esto como segundo parametro al fetch:
 //{ cache: 'no-cache' }
@@ -15,7 +16,7 @@ export const revalidate = 0
 //{ next: {revalidate: 0 } }
 
 export default async function DynamicPage() {
-  const response = await fetch(
+  const res = await fetch(
     'https://api.unsplash.com/photos/random?client_id=' + process.env.UNSPLASH_API_KEY,
     {
       // cache: 'no-cache'
@@ -23,7 +24,7 @@ export default async function DynamicPage() {
       // next: { revalidate: 0 }
     }
   )
-  const randomImg: UnsplashImage = await response.json()
+  const randomImg: UnsplashImage = await res.json()
 
   //Para calcular dinamicamente el minimo width y height de la imagen
   const width = Math.min(500, randomImg.width)
