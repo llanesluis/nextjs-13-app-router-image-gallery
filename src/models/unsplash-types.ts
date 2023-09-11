@@ -17,3 +17,13 @@ export interface UnsplashTopic {
   description: string
   total_photos: number
 }
+
+export interface UnsplashUser {
+  id: string
+  username: string
+  name: string
+  bio: string
+  profile_image: { large: string }
+  total_photos: number
+  links: { photos: string }
+}
