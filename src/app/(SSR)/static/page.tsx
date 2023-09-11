@@ -6,6 +6,9 @@ import Link from 'next/link'
 export const metadata = {
   title: 'Static fetching | App Router',
 }
+
+//Equivalente a getStaticProps
+
 export default async function StaticPage() {
   const res = await fetch(
     'https://api.unsplash.com/photos/random?client_id=' + process.env.UNSPLASH_API_KEY
