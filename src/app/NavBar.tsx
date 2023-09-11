@@ -8,7 +8,7 @@ export default function NavBar() {
   const pathname = usePathname()
 
   return (
-    <Navbar bg='primary' variant='dark' sticky='top' expand='sm' collapseOnSelect>
+    <Navbar bg='black' variant='dark' sticky='top' expand='sm' collapseOnSelect>
       <Container>
         <Navbar.Brand as={Link} href='/'>
           Image Gallery
@@ -17,18 +17,18 @@ export default function NavBar() {
         <Navbar.Collapse id='main-navbar'>
           <Nav>
             <Nav.Link as={Link} href='/static' active={pathname == '/static'}>
-              Static
+              Static fetching
             </Nav.Link>
-            <Nav.Link as={Link} href='/' active={pathname == '/page2'}>
-              Pag 2
+            <Nav.Link as={Link} href='/dynamic' active={pathname == '/dynamic'}>
+              Dynamic fetching
             </Nav.Link>
-            <Nav.Link as={Link} href='/' active={pathname == '/pag3'}>
-              Pag 3
+            <Nav.Link as={Link} href='/isr' active={pathname == '/isr'}>
+              Incremental Static Regeneration
             </Nav.Link>
             <Nav.Link as={Link} href='/' active={pathname == '/pag4'}>
               Pag 4
             </Nav.Link>
-            <Nav.Link as={Link} href='/' active={pathname == '/users'}>
+            <Nav.Link as={Link} href='/users' active={pathname == '/users'}>
               Users
             </Nav.Link>
           </Nav>

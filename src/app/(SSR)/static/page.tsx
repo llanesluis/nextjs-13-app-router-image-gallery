@@ -27,10 +27,10 @@ export default async function StaticPage() {
       </Alert>
       <Image
         src={randomImg.urls.raw}
-        alt={randomImg.description}
         height={height}
         width={width}
         className='rounded shadow mw-100 h-100'
+        alt={randomImg.description}
       />
       by <Link href={`/users/${randomImg.user.username}`}>{randomImg.user.username}</Link>
     </div>
