@@ -27,3 +27,7 @@ export interface UnsplashUser {
   total_photos: number
   links: { photos: string }
 }
+
+export interface UnplashSearchResponse {
+  results: UnsplashImage[]
+}

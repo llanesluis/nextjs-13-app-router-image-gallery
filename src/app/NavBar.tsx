@@ -19,12 +19,15 @@ export default function NavBar() {
             <Nav.Link as={Link} href='/static' active={pathname == '/static'}>
               Static fetching
             </Nav.Link>
+
             <Nav.Link as={Link} href='/dynamic' active={pathname == '/dynamic'}>
               Dynamic fetching
             </Nav.Link>
+
             <Nav.Link as={Link} href='/isr' active={pathname == '/isr'}>
               ISR
             </Nav.Link>
+
             <NavDropdown title='Topics' id='topics-dropdown'>
               <NavDropdown.Item as={Link} href='/topics/health'>
                 Health
@@ -39,6 +42,10 @@ export default function NavBar() {
 
             <Nav.Link as={Link} href='/users' active={pathname == '/users'}>
               Users
+            </Nav.Link>
+
+            <Nav.Link as={Link} href='/search' active={pathname == '/search'}>
+              Search
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
