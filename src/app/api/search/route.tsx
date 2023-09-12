@@ -13,14 +13,14 @@ export async function GET(req: Request) {
   }
 
   //Entonces si existe "query" se hace la consulta a la API externa y se extraen los datos para ser pasados al cliente
-  const response = await fetch(
+  const res = await fetch(
     `https://api.unsplash.com/search/photos?query=${query}&client_id=${process.env.UNSPLASH_API_KEY}`
   )
   //se regresa data:{ results:[....] } y se destructura directamente
   //const data: UnplashSearchResponse = await response.json()
   //const { results } = data
 
-  const { results }: UnplashSearchResponse = await response.json()
+  const { results }: UnplashSearchResponse = await res.json()
 
   return NextResponse.json({ results })
 }

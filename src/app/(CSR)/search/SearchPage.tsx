@@ -43,7 +43,6 @@ export default function SearchPage() {
         setSearchResults(results)
       } catch (error) {
         console.log(error)
-
         setSearchResultsIsError(true)
       } finally {
         setSearchResultsLoading(false)
