@@ -9,7 +9,7 @@ export const metadata = {
 
 //Equivalente a incremental regeneration del pages router
 //?Ponerlo afuera aplica para toda la pagina, ponerlo adentro es para decirle a next que aplique para un fetch en especifico
-//export const revalidate = 15
+export const revalidate = 15
 //O poner esto como segundo parametro al fetch:
 //{ next: {revalidate: x } }
 
@@ -19,7 +19,7 @@ export default async function ISRPage() {
   const red = await fetch(
     'https://api.unsplash.com/photos/random?client_id=' + process.env.UNSPLASH_API_KEY,
     {
-      next: { revalidate: 15 },
+      //next: { revalidate: 15 },
     }
   )
   const randomImg: UnsplashImage = await red.json()
