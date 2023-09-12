@@ -7,9 +7,10 @@ export const metadata = {
   title: 'Dynamic fetching | App Router',
 }
 
-//?Ponerlo afuera aplica para toda la pagina, ponerlo adentro es para decirle a next que aplique para un fetch en especifico
 //Equivalente a getServerSideProps del pages router
-export const revalidate = 0
+//?Ponerlo afuera aplica para toda la pagina, ponerlo adentro es para decirle a next que aplique para un fetch en especifico
+//export const revalidate = 0
+
 //O poner esto como segundo parametro al fetch:
 //{ cache: 'no-cache' }
 //{ cache: 'no-store' }
@@ -19,7 +20,7 @@ export default async function DynamicPage() {
   const res = await fetch(
     'https://api.unsplash.com/photos/random?client_id=' + process.env.UNSPLASH_API_KEY,
     {
-      // cache: 'no-cache'
+      cache: 'no-cache',
       // cache: 'no-store'
       // next: { revalidate: 0 }
     }
