@@ -66,8 +66,6 @@ export default async function UserPage({ params: { username } }: UserPageProps) 
       >
         {userImgs.map((img) => {
           //Para calcular dinamicamente el minimo width y height de la imagen
-          const width = Math.min(300, img.width)
-          const height = (width / img.width) * img.height
           return (
             <div key={img.user.username} className='d-grid'>
               <Image

@@ -31,9 +31,6 @@ export default async function TopicPage({ params: { topic } }: TopicPageProps) {
 
   return (
     <section>
-      <Link href={'/topics'}>Go to all topics</Link>
-      <h1>{topic}</h1>
-      <hr />
       <Alert>
         This pase uses <strong>generateStaticParams()</strong> to render and cache static pages at
         build time, even though the URL allows a dynamic parameter. Pages that are not included in
@@ -44,6 +41,9 @@ export default async function TopicPage({ params: { topic } }: TopicPageProps) {
         , this can be disabled by setting <i>export const dynamicParams = false</i> and only the
         pages generated at build time will exist.
       </Alert>
+      <Link href={'/topics'}>Go to all topics</Link>
+      <h1>{topic}</h1>
+      <hr />
       <div
         style={{
           display: 'grid',
