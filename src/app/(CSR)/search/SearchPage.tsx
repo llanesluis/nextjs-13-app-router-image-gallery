@@ -1,6 +1,6 @@
 'use client'
 
-import { UnsplashImage } from '@/models/unsplash-types'
+import { UnplashSearchResponse, UnsplashImage } from '@/models/unsplash-types'
 import { FormEvent, useState } from 'react'
 import {
   Alert,
@@ -15,6 +15,7 @@ import {
 
 export default function SearchPage() {
   //TODO: Cambiar a SWR para fetch desde el cliente
+  const [query, setQuery] = useState<string | null>('')
   const [searchResults, setSearchResults] = useState<UnsplashImage[] | null>(null)
   const [searchResultsLoading, setSearchResultsLoading] = useState(false)
   const [searchResultsIsError, setSearchResultsIsError] = useState(false)
@@ -24,19 +25,22 @@ export default function SearchPage() {
     const form = e.currentTarget
 
     const formData = new FormData(form)
-    const query = formData.get('query')?.toString().trim()
+    const userQuery = formData.get('query')?.toString().trim()
 
-    // TODO: Mandar query a la API
-    if (query) {
+    //*Mandar query a la API
+
+    if (userQuery) {
       try {
+        setQuery(null)
         setSearchResults(null)
         setSearchResultsIsError(false)
         setSearchResultsLoading(true)
 
-        const res = await fetch(`/api/search?query=${query}`)
-        const images: UnsplashImage[] = await res.json()
+        const res = await fetch(`/api/search?query=${userQuery}`)
+        const { results }: UnplashSearchResponse = await res.json()
 
-        setSearchResults(images)
+        setQuery(userQuery)
+        setSearchResults(results)
       } catch (error) {
         console.log(error)
 
@@ -73,6 +77,11 @@ export default function SearchPage() {
         {searchResults?.length === 0 && <p>Nothing found, try another query...</p>}
       </div>
 
+      {query && (
+        <h3>
+          Results for: <i>{query}</i>
+        </h3>
+      )}
       {searchResults && (
         <>
           {searchResults.map((img) => (
