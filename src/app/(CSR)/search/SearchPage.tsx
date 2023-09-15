@@ -65,7 +65,11 @@ export default function SearchPage() {
           <FormLabel>Search query</FormLabel>
           <FormControl name='query' placeholder='E.g. cats, holidays, fitness...' />
         </FormGroup>
-        <Button className='mb-3' type='submit' disabled={searchResultsLoading}>
+        <Button
+          className='mb-3 bg-blue-600 dark:bg-blue-950'
+          type='submit'
+          disabled={searchResultsLoading}
+        >
           Search
         </Button>
       </Form>
@@ -82,19 +86,19 @@ export default function SearchPage() {
         </h3>
       )}
       {searchResults && (
-        <>
+        <div className='container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2" justify-items-center'>
           {searchResults.map((img) => (
-            <Image
-              key={img.urls.raw}
-              src={img.urls.raw}
-              alt={img.description}
-              width={250}
-              height={250}
-              className='rounded shadow'
-              style={{ objectFit: 'cover', margin: 4 }}
-            />
+            <div key={img.urls.raw} className='flex w-[250px] h-[250px] overflow-hidden m-2'>
+              <Image
+                src={img.urls.raw}
+                alt={img.description}
+                width={250}
+                height={250}
+                className='rounded shadow object-cover'
+              />
+            </div>
           ))}
-        </>
+        </div>
       )}
     </div>
   )

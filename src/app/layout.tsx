@@ -3,9 +3,9 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { Container, SSRProvider } from '../components/bootsrap'
-import NavBar from './NavBar'
+import NavBar from '../components/NavBar'
 
-import Providers from './providers'
+import Providers from '../providers'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={`${montserrat.className} bg-slate-200 dark:bg-gray-800`}>
+      <body className={`${montserrat.className} bg-slate-100 dark:bg-gray-800  dark:text-white`}>
         <Providers>
           <SSRProvider>
             <header>

@@ -64,22 +64,23 @@ export default async function UserPage({ params: { username } }: UserPageProps) 
           placeItems: 'center',
         }}
       >
-        {userImgs.map((img) => {
-          //Para calcular dinamicamente el minimo width y height de la imagen
-          return (
-            <div key={img.user.username} className='d-grid'>
-              <Image
-                key={img.user.username}
-                alt={img.description}
-                src={img.urls.raw}
-                height={300}
-                width={300}
-                className='rounded shadow'
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-          )
-        })}
+        <div className='container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center'>
+          {userImgs.map((img) => {
+            //Para calcular dinamicamente el minimo width y height de la imagen
+            return (
+              <div key={img.user.username} className='flex w-[250px] h-[250px] overflow-hidden m-2'>
+                <Image
+                  key={img.user.username}
+                  alt={img.description}
+                  src={img.urls.raw}
+                  height={300}
+                  width={300}
+                  className='rounded shadow object-cover'
+                />
+              </div>
+            )
+          })}
+        </div>
       </div>
     </section>
   )

@@ -44,26 +44,19 @@ export default async function TopicPage({ params: { topic } }: TopicPageProps) {
       <Link href={'/topics'}>Go to all topics</Link>
       <h1>{topic}</h1>
       <hr />
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '10px',
-          placeItems: 'center',
-        }}
-      >
-        {photos.map((photo) => {
+      <div className='container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2" justify-items-center'>
+        {photos.map((photo, i) => {
           return (
-            <div key={photo.user.username} className='d-grid'>
-              <Image
-                //key={photo.user.username}
-                alt={photo.description}
-                src={photo.urls.raw}
-                height={250}
-                width={250}
-                className='rounded shadow-sm'
-                style={{ objectFit: 'cover' }}
-              />
+            <div key={i}>
+              <div className='flex w-[250px] h-[250px] overflow-hidden m-2'>
+                <Image
+                  alt={photo.description}
+                  src={photo.urls.raw}
+                  height={250}
+                  width={250}
+                  className='rounded shadow object-cover'
+                />
+              </div>
               <Link href={`/users/${photo.user.username}`}>{photo.user.username}</Link>
             </div>
           )
