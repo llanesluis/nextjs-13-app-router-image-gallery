@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap'
 import { usePathname } from 'next/navigation'
+import Theme from '@/components/Theme'
 
 export default function NavBar() {
   const pathname = usePathname()
@@ -15,7 +16,7 @@ export default function NavBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='main-navbar' />
         <Navbar.Collapse id='main-navbar'>
-          <Nav>
+          <Nav className='mr-4'>
             <Nav.Link as={Link} href='/static' active={pathname == '/static'}>
               Static fetching
             </Nav.Link>
@@ -48,6 +49,7 @@ export default function NavBar() {
               Search
             </Nav.Link>
           </Nav>
+          <Theme />
         </Navbar.Collapse>
       </Container>
     </Navbar>

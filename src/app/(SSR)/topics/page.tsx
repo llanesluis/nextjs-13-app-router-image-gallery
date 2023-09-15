@@ -20,10 +20,14 @@ export default async function TopicsPage() {
       <hr />
       <ul>
         {topics.map((topic) => (
-          <li key={topic.id}>
-            <Link href={`/topics/${topic.slug}`}>{topic.title}</Link> |{' '}
-            <small>{topic.total_photos} photos</small>
-          </li>
+          <>
+            {' '}
+            <li key={topic.id} id={topic.slug}>
+              <Link href={`/topics/${topic.slug}`}>{topic.title}</Link> |{' '}
+              <small>{topic.total_photos} photos</small>
+            </li>
+            <hr />
+          </>
         ))}
       </ul>
     </section>

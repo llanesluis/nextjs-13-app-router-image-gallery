@@ -5,6 +5,8 @@ import { Montserrat } from 'next/font/google'
 import { Container, SSRProvider } from '../components/bootsrap'
 import NavBar from './NavBar'
 
+import Providers from './providers'
+
 const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -14,14 +16,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
-      <body className={montserrat.className}>
-        <SSRProvider>
-          <NavBar />
-          <main>
-            <Container className='py-4'>{children}</Container>
-          </main>
-        </SSRProvider>
+    <html lang='en' suppressHydrationWarning>
+      <body className={`${montserrat.className} bg-slate-200 dark:bg-gray-800`}>
+        <Providers>
+          <SSRProvider>
+            <header>
+              <NavBar />
+            </header>
+            <main>
+              <Container className='py-4'>{children}</Container>
+            </main>
+            <footer></footer>
+          </SSRProvider>
+        </Providers>
       </body>
     </html>
   )
