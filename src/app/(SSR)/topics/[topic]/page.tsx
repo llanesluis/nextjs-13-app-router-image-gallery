@@ -36,9 +36,9 @@ export default async function TopicPage({ params: { topic } }: TopicPageProps) {
         build time, even though the URL allows a dynamic parameter. Pages that are not included in
         generateStaticParams() {` `}
         <strong>
-          will be fetched and rendered on first access and then cached for subsequent requests
+          b will be fetched and rendered on first access and then cached for subsequent requests
         </strong>
-        , this can be disabled by setting <i>export const dynamicParams = false</i> and only the
+        , this can be disabled by setting <i>export const dynamicParams = false</i> and only theG
         pages generated at build time will exist.
       </Alert>
       <Link href={'/topics'}>Go to all topics</Link>

@@ -12,12 +12,7 @@ export default function Theme() {
     setIsMounted(true)
   }, [])
 
-  if (!isMounted)
-    return (
-      <section>
-        <select></select>
-      </section>
-    )
+  if (!isMounted) return null
 
   return (
     <section>
